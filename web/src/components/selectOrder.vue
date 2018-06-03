@@ -13,76 +13,78 @@
             </el-date-picker>
             <span style="float: left;line-height: 40px">至</span>
             <el-date-picker
-                    v-model="value1"
+                    v-model="value2"
                     type="date"
                     placeholder="选择日期"
                     style="float: left">
             </el-date-picker>
             <div class="clearfloat"></div>
         </div>
-        <div class="queryx">
-            <span>账号：</span>
+        <!--<div class="queryx">-->
+        <!--<span>账号：</span>-->
 
-            <el-autocomplete
-                    v-model="state4"
-                    :fetch-suggestions="querySearchAsync"
-                    placeholder="请输入账号"
-                    @select="handleSelect"
-            ></el-autocomplete>
-            <span>人员姓名：</span>
-            <el-autocomplete
-                    v-model="state4"
-                    :fetch-suggestions="querySearchAsync"
-                    placeholder="请输入姓名"
-                    @select="handleSelect"
-            ></el-autocomplete>
-            <div class="clearfloat"></div>
-        </div>
+        <!--<el-autocomplete-->
+        <!--v-model="state3"-->
+        <!--:fetch-suggestions="querySearchAsync"-->
+        <!--placeholder="请输入账号"-->
+        <!--@select="handleSelect"-->
+        <!--&gt;</el-autocomplete>-->
+        <!--<span>人员姓名：</span>-->
+        <!--<el-autocomplete-->
+        <!--v-model="state4"-->
+        <!--:fetch-suggestions="querySearchAsync"-->
+        <!--placeholder="请输入姓名"-->
+        <!--@select="handleSelect"-->
+        <!--&gt;</el-autocomplete>-->
+        <!--<el-button type="primary" icon="el-icon-search">搜索</el-button>-->
+        <!--<div class="clearfloat"></div>-->
+        <!--</div>-->
         <el-table
-                :data="tableData"
+                :data="orderData"
                 border
                 style="width: 100%">
             <el-table-column
                     fixed
-                    prop="date"
+                    prop="o_type.value"
                     label="支付方式"
                     width="100">
             </el-table-column>
             <el-table-column
-                    prop="name"
+                    prop="id"
                     label="交易订单号"
                     width="180">
             </el-table-column>
             <el-table-column
-                    prop="province"
+                    prop="seller_id"
                     label="商家订单号"
                     width="180">
             </el-table-column>
             <el-table-column
-                    prop="city"
+                    prop="uid"
                     label="账号"
                     width="120">
             </el-table-column>
             <el-table-column
-                    prop="address"
+                    prop="cealname"
                     label="姓名"
                     width="80">
             </el-table-column>
             <el-table-column
-                    prop="zip"
+                    prop="gold"
                     label="订单金额"
                     width="120">
             </el-table-column>
             <el-table-column
-                    prop="zip"
+                    prop="state"
                     label="支付状态"
                     width="120">
             </el-table-column>
             <el-table-column
-                    fixed="right"
+                    prop="pay_time"
                     label="订单时间"
                     width="200">
             </el-table-column>
+
         </el-table>
 
     </div>
@@ -92,15 +94,37 @@
         name: "select-order",
         data() {
             return {
-                tableData: [{
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '弄',
-                    zip: 200333
-                }]
-
+                orderData: [{
+                    type:[
+                        {key:0,value:"ali"},
+                        {key:1,value:"微信app"},
+                        {key:2,value:"微信公众号"}
+                    ],
+                    id:"",
+                    seller_id:"",
+                    uid:"",
+                    cealname:"",
+                    gold:"",
+                    state:"",
+                    pay_time:""
+                }],
+                value1:"",
+                value2:"",
+                state3:"",
+                state4:"",
+                querySearchAsync:""
+            }
+        },
+        created(){
+            fetch("/api/order/select").then(function (e) {
+                return e.json();
+            }).then((e)=>{
+                this.orderData=e;
+            })
+        },
+        methods:{
+            handleSelect(){
+                console.log(state4)
             }
         }
     }

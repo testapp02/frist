@@ -5,12 +5,12 @@
                 <el-input v-model="ruleForm.title"></el-input>
             </el-form-item>
             <el-form-item label="课件类型" prop="remark">
-                <el-select v-model="value" placeholder="请选择">
+                <el-select v-model="ruleForm.remark" placeholder="请选择">
                     <el-option
-                            v-for="item in ruleForm.remark"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
+                            v-for="item in ruleForm.res_type"
+                            :key="item.res_type"
+                            :label="item.remark"
+                            :value="item.res_type">
                     </el-option>
                 </el-select>
             </el-form-item>
@@ -59,7 +59,18 @@
         data() {
             return {
                 fileList: [],
-                ruleForm:[],
+                ruleForm:{
+                    title:"",
+                    remark:"",
+                    res_type:[
+                        {res_type:"1",remark:"音频"},
+                        {res_type:"2",remark:"视频"},
+                        {res_type:"3",remark:"图片"}
+                    ],
+                    icon:"",
+                    res_path:"",
+                    content:""
+                },
                 fileList2:[],
                 value:""
             };

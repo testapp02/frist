@@ -29,7 +29,7 @@
         console.log('currentPage', this.currentPage, 'pageSize', this.pageSize)
       })
     },
-    props: ['pageVo', 'currentPage', 'count', 'totalRecs', 'pageSize'],  // 这里是接受父组件传过来的所以值
+    props: ['pageVo', 'currentPage', 'count', 'totalRecs', 'pageSize'],  // 这里是接受父组件传过来的所有值
     data () {
       return {
         pageSizesList: [10, 20, 30, 40, 50],
