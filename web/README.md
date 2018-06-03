@@ -1,4 +1,4 @@
-# kaoshi
+# jimi
 
 > A Vue.js project
 
