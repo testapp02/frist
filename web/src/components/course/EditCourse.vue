@@ -15,7 +15,7 @@
                 </el-select>
             </el-form-item>
 
-            <el-form-item label="文件" prop="res_path">
+            <el-form-item label="文件" prop="ruleForm.res_path">
                 <el-upload
                         class="upload-demo"
                         action="https://api/upload/load"
@@ -29,7 +29,7 @@
                     <el-button size="small" type="primary">点击上传</el-button>
                 </el-upload>
             </el-form-item>
-            <el-form-item label="缩略图" prop="icon">
+            <el-form-item label="缩略图" prop="ruleForm.icon">
                 <el-upload
                         class="upload-demo"
                         action="https://jsonplaceholder.typicode.com/posts/"
@@ -45,7 +45,7 @@
                 <el-input type="textarea" v-model="ruleForm.content"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="submitForm('ruleForm')">确定修改</el-button>
+                <el-button type="primary" @click="submitForm">确定修改</el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -67,17 +67,17 @@
                     ],
                     icon:"",
                     res_path:"",
-                    content:""
+                    content:"",
+                    id:""
                 },
-
                 fileList2:[],
                 message:"",
-                value:""
+
             };
         },
         mounted(){
             fetch("/api/course/EditCourse/"+this.$route.params.id).then(function (e) {
-                return e.JSON();
+                return e.json();
             }).then((e)=>{
                 this.ruleForm.title=e.title;
                 this.ruleForm.remark=e.remark;
@@ -88,34 +88,19 @@
         },
         methods:{
             submitForm(){
-                var ruleFormCon=JSON.stringify(this.ruleForm);
-                console.log(ruleFormCon);
-                fetch("/api/course/editCon", {
-
-                method: "post",
-//                    headers: {
-//                        'Content-Type': 'application/x-www-form-urlencoded'
-//                    },
-                    body: ruleFormCon,
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                }).then(function (e) {
-                    return e.text();
-                }).then((e)=>{
-                    if(e=="ok"){
+                var params = `title=${this.ruleForm.title}&remark=${this.ruleForm.res_type.remark}&res_type=${this.ruleForm.res_type.res_type}&icon=${this.ruleForm.icon}&res_path=${this.ruleForm.res_path}&content=${this.ruleForm.content}&id=${this.ruleForm.id}`;
+                fetch("/api/course/editCon?"+params).then(function (e) {
+                    console.log(e);
+                    if(e == "ok") {
                         this.$message({
-                            message:"添加成功",
-                            type: 'success'
-                        })
-
-                    }else{
-                        this.$message({
-                            message:"添加失败",
-                            type: 'warning'
-                        })
+                            message: "修改成功",
+                            type: "success",
+                        });
+                        this.$router.push("/course")
+                    } else {
+                        return false;
                     }
+
                 })
             },
             handleRemove(file, fileList) {

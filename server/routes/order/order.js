@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var md5=require("./md5");
-var mysql=require("./mysql");
+var md5=require("../md5");
+var mysql=require("../mysql");
 
 router.get("/select",function (req,res){
     mysql.query("select * from ap_order",function (err,result) {

@@ -7,9 +7,9 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var course  = require('./routes/course');
-var banner  = require('./routes/banner');
-var order = require('./routes/order');
+var course  = require('./routes/course/course');
+var banner  = require('./routes/banner/banner');
+var order = require('./routes/order/order');
 
 var app = express();
 app.listen(8888,function(){

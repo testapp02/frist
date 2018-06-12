@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Main from '@/components/Main'
 import Add from '@/components/Add'
 
+import login from '@/components/login'
 import selectUser from '@/components/selectUser'
 import banner from '@/components/banner'
 import selectOrder from '@/components/selectOrder'
@@ -19,7 +20,10 @@ import AddCourse from '@/components/course/AddCourse'
 Vue.use(Router)
 
 var router= new Router({
-  routes: [
+  routes: [{
+      path: "/login",
+      component: login
+  },
     {
       path: '/',
       component: Main,
@@ -40,4 +44,26 @@ var router= new Router({
     }
   ]
 })
+// router.beforeEach(function(to, from, next) {
+//     function getCookie(name) {
+//         let str = document.cookie;
+//         let arr = str.split("; ");
+//         arr.forEach(function(ele, index) {
+//             let arr1 = ele.split("=");
+//             if(arr1[0] == name) {
+//                 name = arr1[1];
+//             }
+//         });
+//         return unescape(name);
+//     }
+//     if(to.path == "/login") {
+//         next();
+//     } else {
+//         if(getCookie("login") == "yes") {
+//             next();
+//         } else {
+//             next("/login");
+//         }
+//     }
+// })
 export default router
