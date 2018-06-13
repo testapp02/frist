@@ -7,12 +7,18 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+<<<<<<< HEAD
 var course  = require('./routes/course');
 var banner  = require('./routes/banner');
 var order = require('./routes/order');
 var shOrder = require('./routes/pjb/order/shOrder.js');
 var jyOrder = require('./routes/pjb/order/jyOrder.js');
 var fhOrder = require('./routes/pjb/order/fhOrder.js');
+=======
+var course  = require('./routes/course/course');
+var banner  = require('./routes/banner/banner');
+var order = require('./routes/order/order');
+>>>>>>> 5da1bb038889fc935df5c9a6c2171ba3fee33fbc
 
 var app = express();
 app.listen(8888,function(){
