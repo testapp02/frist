@@ -17,7 +17,7 @@
 
         </Menu>
       </el-aside>
-      <el-main>
+      <el-main style="background: #fff;">
         <router-view>
 
         </router-view>
@@ -67,7 +67,7 @@ export default {
   .el-main {
     background-color: #E9EEF3;
     color: #333;
-    text-align: center;
+    /*text-align: center;*/
     height:90vh;
 
   }

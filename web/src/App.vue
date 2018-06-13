@@ -22,5 +22,7 @@ export default {
   a{
     text-decoration:none;
   }
-
+	th .cell{
+		text-align: center;
+	}
 </style>

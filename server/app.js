@@ -10,6 +10,9 @@ var users = require('./routes/users');
 var course  = require('./routes/course');
 var banner  = require('./routes/banner');
 var order = require('./routes/order');
+var shOrder = require('./routes/pjb/order/shOrder.js');
+var jyOrder = require('./routes/pjb/order/jyOrder.js');
+var fhOrder = require('./routes/pjb/order/fhOrder.js');
 
 var app = express();
 app.listen(8888,function(){
@@ -32,6 +35,9 @@ app.use('/users', users);
 app.use('/api/course',course);
 app.use('/api/banner',banner);
 app.use('/api/order',order);
+app.use('/api/pjb/shOrder',shOrder);
+app.use('/api/pjb/jyOrder',jyOrder);
+app.use('/api/pjb/fhOrder',fhOrder);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -14,6 +14,8 @@ import about from '@/components/about'
 import selectShare from '@/components/selectShare'
 import EditCourse from '@/components/course/EditCourse'
 import AddCourse from '@/components/course/AddCourse'
+import pjbOrderInfo from '@/components/pjb/order/orderInfo.vue'
+import pjbAddFhInfo from '@/components/pjb/order/addFhInfo.vue'
 
 
 Vue.use(Router)
@@ -35,7 +37,9 @@ var router= new Router({
             {path: '/withDrawal', component: withDrawal},
             {path: '/comments', component: comments},
             {path: '/about', component: about},
-            {path:'/selectShare', component:selectShare}
+            {path:'/selectShare', component:selectShare},
+            {path:'/pjbOrderInfo', component:pjbOrderInfo},
+            {path:'/pjbAddFhInfo', component:pjbAddFhInfo}
         ]
     }
   ]
