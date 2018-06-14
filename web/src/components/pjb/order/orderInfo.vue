@@ -1,5 +1,8 @@
 <template>
 	<el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+		<el-tab-pane label="账单" name="g_first">
+			<gjcZdOrderInfo></gjcZdOrderInfo>
+		</el-tab-pane>
 		<el-tab-pane label="发货订单" name="first">
 			<pjbFyOrderInfo></pjbFyOrderInfo>
 		</el-tab-pane>
@@ -66,8 +69,11 @@
 <script>
 	import pjbJyOrderInfo from '@/components/pjb/order/jyOrderInfo.vue'
 	import pjbFyOrderInfo from '@/components/pjb/order/fhOrderInfo.vue'
-	export default {
+    import gjcZdOrderInfo from '@/components/gjc/zdOrderInfo.vue'
+
+    export default {
 		components: {
+            gjcZdOrderInfo,
 			pjbJyOrderInfo,
 			pjbFyOrderInfo
 		},
@@ -200,7 +206,10 @@
 				this.activeName = "second";
 			} else if(this.$route.query.flag == 2) {
 				this.activeName = "three";
-			}
+			}else if(this.$route.query.flag == 3){
+                this.activeName = "g_first";
+
+            }
 		},
 		watch: {
 			'$route.query.flag' () {
@@ -208,7 +217,9 @@
 					this.activeName = "second";
 				} else if(this.$route.query.flag == 2) {
 					this.activeName = "three";
-				}else{
+				}else if(this.$route.query.flag == 3){
+                    this.activeName = "g_first";
+				} else{
 					this.activeName = "first";
 				}
 			}

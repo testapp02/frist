@@ -6,6 +6,7 @@
 		</div>
 		<div style="display: inline-block;width: 650px;margin-bottom: 20px;">
 			<input v-model="id" placeholder="订单号搜索..." style="width: 300px;" @keydown.13="find" class="el-input__inner" />
+			<input v-model="nickname" placeholder="人名搜索..." style="width: 300px;" @keydown.13="find" class="el-input__inner" />
 			<el-button icon="el-icon-search" circle @click="find"></el-button>
 		</div>
 		<el-table :data="tableData" border style="width: 100%">

@@ -23,6 +23,9 @@
 							<span>订单管理</span>
 						</template>
 						<el-menu-item-group>
+							<router-link to="/pjbOrderInfo?flag=3">
+								<el-menu-item index="3-4">账单</el-menu-item>
+							</router-link>
 							<router-link to="/pjbOrderInfo">
 								<el-menu-item index="3-1">发货订单</el-menu-item>
 							</router-link>
@@ -32,7 +35,7 @@
 							<router-link to="/pjbOrderInfo?flag=2">
 								<el-menu-item index="3-3">交易订单</el-menu-item>
 							</router-link>
-						</el-menu-item-group>
+					</el-menu-item-group>
 				</el-submenu>
 				<el-submenu index="4">
 					<template slot="title">

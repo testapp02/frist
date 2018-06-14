@@ -6,7 +6,6 @@ import Add from '@/components/Add'
 import login from '@/components/login'
 import selectUser from '@/components/selectUser'
 import banner from '@/components/banner'
-import selectOrder from '@/components/selectOrder'
 import course from '@/components/course'
 import userAudit from '@/components/userAudit'
 import withDrawal from '@/components/withDrawal'
@@ -33,7 +32,6 @@ var router= new Router({
             {path: '/', component: Add},
             {path: '/selectUser', component: selectUser},
             {path: '/banner', component: banner},
-            {path: '/selectOrder', component: selectOrder},
             {path: '/course',component: course},
             {path:'/EditCourse/:id', component:EditCourse},
             {path:'/AddCourse', component:AddCourse},
